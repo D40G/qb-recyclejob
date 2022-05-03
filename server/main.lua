@@ -31,7 +31,7 @@ RegisterNetEvent("qb-recyclejob:TradeInput", function(item, amount)
     local src = source
     local tradeamount = tonumber(amount)
     local Player = QBCore.Functions.GetPlayer(src)
-    local pay = Config.ItemPrices[item].price
+    local pay = (Config.ItemPrices[item].price * tradeamount)
 
     if item == 'cash' then
         local pay = (tradeamount * Config.ItemPrices["cash"].price)
