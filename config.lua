@@ -44,6 +44,8 @@ Config['delivery'] = {
 
 --Progress Bar Time -- 
 
+Config.PickUpTime = 5000
+Config.TurnInTime = 5000
 Config.TradeTime = 6000   -- How long it takes to trade in materials
 
 -----------------------------------------------
