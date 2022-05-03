@@ -312,9 +312,9 @@ end)
 
 RegisterNetEvent('qb-recyclejob:SellItems', function()
     exports['qb-menu']:openMenu({
-		{ header = "Materials Trade", txt = "Trade Materials Here", isMenuHeader = true }, 
-		{ header = "", txt = "✘ Close", params = { event = "qb-recycle:Sell", args = {amount = 'close', item = 'close'} } },
-		{ header = "Metal Scrap", txt = "", params = { event = "qb-recyclejob:SellItems:MetalScrap", } },
+	{ header = "Materials Trade", txt = "Trade Materials Here", isMenuHeader = true }, 
+	{ header = "", txt = "✘ Close", params = { event = "qb-recycle:Sell", args = {amount = 'close', item = 'close'} } },
+	{ header = "Metal Scrap", txt = "", params = { event = "qb-recyclejob:SellItems:MetalScrap", } },
         { header = "Iron", txt = "", params = { event = "qb-recyclejob:SellItems:Iron", } },
         { header = "Steel", txt = "", params = { event = "qb-recyclejob:SellItems:Steel", } },
         { header = "Aluminum", txt = "", params = { event = "qb-recyclejob:SellItems:Aluminum", } },
@@ -332,10 +332,10 @@ end)
 
 RegisterNetEvent('qb-recyclejob:SellItems:MetalScrap', function()
     exports['qb-menu']:openMenu({
-		{ header = "Materials Trade", txt = "Trade Metal Scrap", isMenuHeader = true }, 
-		{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
+	{ header = "Materials Trade", txt = "Trade Metal Scrap", isMenuHeader = true }, 
+	{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
         { header = "Metal Scrap", txt = "Trade ALL for Metal Scrap", params = { event = "qb-recyclejob:Trade", args = {amount = 'all', item = 'metalscrap'} } },
-		{ header = "Metal Scrap", txt = "Trade 1 for "..Config.ItemPrices["metalscrap"].price.. " Metal Scrap", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'metalscrap'} } },
+	{ header = "Metal Scrap", txt = "Trade 1 for "..Config.ItemPrices["metalscrap"].price.. " Metal Scrap", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'metalscrap'} } },
         { header = "Metal Scrap", txt = "Enter amount of Metal Scrap to trade", params = { event = "qb-recyclejob:openinput", args = 'metalscrap' } },
 	})
 end)
@@ -356,10 +356,10 @@ end)
 
 RegisterNetEvent('qb-recyclejob:SellItems:Steel', function()
     exports['qb-menu']:openMenu({
-		{ header = "Materials Trade", txt = "Trade Steel", isMenuHeader = true }, 
-		{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
+	{ header = "Materials Trade", txt = "Trade Steel", isMenuHeader = true }, 
+	{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
         { header = "Steel", txt = "Trade ALL for Steel", params = { event = "qb-recyclejob:Trade", args = {amount = 'all', item = 'steel'} } },
-		{ header = "Steel", txt = "Trade 1 for "..Config.ItemPrices["steel"].price.. " Steel", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'steel'} } },
+	{ header = "Steel", txt = "Trade 1 for "..Config.ItemPrices["steel"].price.. " Steel", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'steel'} } },
         { header = "Steel", txt = "Enter amount of Steel to trade", params = { event = "qb-recyclejob:openinput", args = 'steel' } },
 	})
 end)
@@ -370,10 +370,10 @@ end)
 
 RegisterNetEvent('qb-recyclejob:SellItems:Aluminum', function()
     exports['qb-menu']:openMenu({
-		{ header = "Materials Trade", txt = "Trade Aluminum", isMenuHeader = true }, 
-		{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
+	{ header = "Materials Trade", txt = "Trade Aluminum", isMenuHeader = true }, 
+	{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
         { header = "Aluminum", txt = "Trade ALL for Aluminum", params = { event = "qb-recyclejob:Trade", args = {amount = 'all', item = 'aluminum'} } },
-		{ header = "Aluminum", txt = "Trade 1 for "..Config.ItemPrices["aluminum"].price.. " Aluminum", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'aluminum'} } },
+	{ header = "Aluminum", txt = "Trade 1 for "..Config.ItemPrices["aluminum"].price.. " Aluminum", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'aluminum'} } },
         { header = "Aluminum", txt = "Enter amount of Aluminum to trade", params = { event = "qb-recyclejob:openinput", args = 'aluminum' } },
 	})
 end)
@@ -384,10 +384,10 @@ end)
 
 RegisterNetEvent('qb-recyclejob:SellItems:Copper', function()
     exports['qb-menu']:openMenu({
-		{ header = "Materials Trade", txt = "Trade Copper", isMenuHeader = true }, 
-		{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
+	{ header = "Materials Trade", txt = "Trade Copper", isMenuHeader = true }, 
+	{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
         { header = "Copper", txt = "Trade ALL for Copper", params = { event = "qb-recyclejob:Trade", args = {amount = 'all', item = 'copper'} } },
-		{ header = "Copper", txt = "Trade 1 for "..Config.ItemPrices["copper"].price.. " Copper", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'copper'}} },
+	{ header = "Copper", txt = "Trade 1 for "..Config.ItemPrices["copper"].price.. " Copper", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'copper'}} },
         { header = "Copper", txt = "Enter amount of Copper to trade", params = { event = "qb-recyclejob:openinput", args = 'copper' } },
 	})
 end)
@@ -398,10 +398,10 @@ end)
 
 RegisterNetEvent('qb-recyclejob:SellItems:Plastic', function()
     exports['qb-menu']:openMenu({
-		{ header = "Materials Trade", txt = "Trade Plastic", isMenuHeader = true }, 
-		{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
+	{ header = "Materials Trade", txt = "Trade Plastic", isMenuHeader = true }, 
+	{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
         { header = "Plastic", txt = "Trade ALL for Plastic", params = { event = "qb-recyclejob:Trade", args = {amount = 'all', item = 'plastic'} } },
-		{ header = "Plastic", txt = "Trade 1 for "..Config.ItemPrices["plastic"].price.. " Plastic", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'plastic'} } },
+	{ header = "Plastic", txt = "Trade 1 for "..Config.ItemPrices["plastic"].price.. " Plastic", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'plastic'} } },
         { header = "Plastic", txt = "Enter amount of Plastic to trade", params = { event = "qb-recyclejob:openinput", args = 'plastic' } },
 	})
 end)
@@ -412,10 +412,10 @@ end)
 
 RegisterNetEvent('qb-recyclejob:SellItems:Glass', function()
     exports['qb-menu']:openMenu({
-		{ header = "Materials Trade", txt = "Trade Glass", isMenuHeader = true }, 
-		{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
+	{ header = "Materials Trade", txt = "Trade Glass", isMenuHeader = true }, 
+	{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
         { header = "Glass", txt = "Trade ALL for Glass", params = { event = "qb-recyclejob:Trade", args = {amount = 'all', item = 'glass'} } },
-		{ header = "Glass", txt = "Trade 1 for "..Config.ItemPrices["glass"].price.. " Glass", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'glass'} } },
+	{ header = "Glass", txt = "Trade 1 for "..Config.ItemPrices["glass"].price.. " Glass", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'glass'} } },
         { header = "Glass", txt = "Enter amount of Glass to trade", params = { event = "qb-recyclejob:openinput", args = 'glass' } },
 	})
 end)
@@ -426,10 +426,10 @@ end)
 
 RegisterNetEvent('qb-recyclejob:SellItems:Rubber', function()
     exports['qb-menu']:openMenu({
-		{ header = "Materials Trade", txt = "Trade Rubber", isMenuHeader = true }, 
-		{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
+	{ header = "Materials Trade", txt = "Trade Rubber", isMenuHeader = true }, 
+	{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
         { header = "Rubber", txt = "Trade ALL for Rubber", params = { event = "qb-recyclejob:Trade", args = {amount = 'all', item = 'rubber'} } },
-		{ header = "Rubber", txt = "Trade 1 for "..Config.ItemPrices["rubber"].price.. " Rubber", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'rubber'} } },
+	{ header = "Rubber", txt = "Trade 1 for "..Config.ItemPrices["rubber"].price.. " Rubber", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'rubber'} } },
         { header = "Rubber", txt = "Enter amount of Rubber to trade", params = { event = "qb-recyclejob:openinput", args = 'rubber' } },
 	})
 end)
@@ -440,8 +440,8 @@ end)
 
 RegisterNetEvent('qb-recyclejob:SellItems:Cash', function()
     exports['qb-menu']:openMenu({
-		{ header = "Materials Trade", txt = "Trade Materials for Cash", isMenuHeader = true }, 
-		{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
+	{ header = "Materials Trade", txt = "Trade Materials for Cash", isMenuHeader = true }, 
+	{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
         { header = "Cash", txt = "Sell all Recycled Materials for Cash", params = { event = "qb-recyclejob:Trade", args = {amount = 'all', item = 'cash'} } },
         { header = "Cash", txt = "Enter amount of Recycled Materials to sell", params = { event = "qb-recyclejob:openinput", args = 'cash' } },
 	})
