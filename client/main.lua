@@ -293,7 +293,7 @@ RegisterNetEvent('qb-recyclejob:openinput', function(data)
         }
     })
     if input then
-        QBCore.Functions.Progressbar("trade_materials", "Trading Materials..", Config.TradeAllTime, false, true, {
+        QBCore.Functions.Progressbar("trade_materials", "Trading Materials..", Config.TradeTime, false, true, {
             disableMovement = true,
             disableCarMovement = true,
             disableMouse = false,
