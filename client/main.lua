@@ -342,10 +342,10 @@ end)
 -- IRON
 RegisterNetEvent('qb-recyclejob:SellItems:Iron', function()
     exports['qb-menu']:openMenu({
-		{ header = "Materials Trade", txt = "Trade Iron", isMenuHeader = true }, 
-		{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
+	{ header = "Materials Trade", txt = "Trade Iron", isMenuHeader = true }, 
+	{ header = "", txt = "⬅ Return", params = { event = "qb-recyclejob:SellItems", } },
         { header = "Iron", txt = "Trade ALL for Iron", params = { event = "qb-recyclejob:Trade", args = {amount = 'all', item = 'iron'} } },
-		{ header = "Iron", txt = "Trade 1 for "..Config.ItemPrices["iron"].price.. " Iron", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'iron'} } },
+	{ header = "Iron", txt = "Trade 1 for "..Config.ItemPrices["iron"].price.. " Iron", params = { event = "qb-recyclejob:Trade", args = {amount = 'one', item = 'iron'} } },
         { header = "Iron", txt = "Enter amount of Iron to trade", params = { event = "qb-recyclejob:openinput", args = 'iron' } },
 	})
 end)
