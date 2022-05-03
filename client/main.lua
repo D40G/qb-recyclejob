@@ -262,8 +262,6 @@ RegisterNetEvent('qb-recyclejob:Trade', function(data)
             TriggerServerEvent('qb-recyclejob:TradeOne', data.item) -- Trade One
         elseif data.amount == 'all' then
             TriggerServerEvent('qb-recyclejob:TradeAll', data.item) -- Trade All
-        else
-            TriggerServerEvent('qb-recyclejob:TradeInput', data.item, data.amount) -- Trade Input Amount
         end
     end)
 	TriggerEvent('qb-recycle:SellItems')
