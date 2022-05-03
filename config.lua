@@ -42,12 +42,9 @@ Config['delivery'] = {
 -----------------------------------------------
 -----------------------------------------------
 
---Progress Bar Times
+--Progress Bar Time -- 
 
-Config.PickupTime = 10000     -- How long it takes to pickup the package (10 seconds)
-Config.TurnInTime = 10000     -- How long it take to unpack/turn in the package (10 seconds)
-Config.TradeOneTime = 3000   -- How long it takes to trade ONE the materials to the trader (3 seconds)
-Config.TradeAllTime = 6000   -- How long it takes to trade in ALL the materials to the trader (6 seconds)
+Config.TradeTime = 6000   -- How long it takes to trade in materials
 
 -----------------------------------------------
 -----------------------------------------------
