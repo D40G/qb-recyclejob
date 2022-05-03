@@ -171,6 +171,10 @@ CreateThread(function()
                                 disableCarMovement = true,
                                 disableMouse = false,
                                 disableCombat = true,
+			    }, {
+            			animDict = "mp_ped_interaction",
+            			anim = "handshake_guy_a",
+            			flags = 16,
                             }, {}, {}, {}, function()
                                 ClearPedTasks(PlayerPedId())
                                 PickupPackage()
@@ -256,6 +260,10 @@ RegisterNetEvent('qb-recyclejob:Trade', function(data)
         disableCarMovement = true,
         disableMouse = false,
         disableCombat = true,
+    }, {
+        animDict = "mp_ped_interaction",
+        anim = "handshake_guy_a",
+        flags = 16,
     }, {}, {}, {}, function()
         ClearPedTasks(PlayerPedId())
         if data.amount == 'one' then
