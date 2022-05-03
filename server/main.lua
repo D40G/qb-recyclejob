@@ -22,163 +22,71 @@ RegisterNetEvent('qb-recycle:server:getItem', function()
 end)
 
 
--- Sell ALL Recycled Materials for (x Amount of Material * x Amount of Recyceld Materials)
+-------------------
+-- INPUT AMOUNT --
+-------------------
 
-RegisterNetEvent("qb-recyclejob:SellAll")
-AddEventHandler("qb-recyclejob:SellAll", function(data)
+RegisterNetEvent("qb-recyclejob:TradeInput", function(item, amount)
+    print(item, amount)
     local src = source
+    local tradeamount = tonumber(amount)
     local Player = QBCore.Functions.GetPlayer(src)
+    local pay = Config.ItemPrices[item].price
 
-    if Player.Functions.GetItemByName("recycledmaterials") ~= nil then
-        local amount = Player.Functions.GetItemByName("recycledmaterials").amount
-
-        if data == 1 then
-            local itemamount = Config.ItemPrices["metalscrap"].price
-            local pay = (amount * itemamount)
-            Player.Functions.RemoveItem('recycledmaterials', amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
-            Player.Functions.AddItem("metalscrap", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["metalscrap"], 'add', pay)
-
-        elseif data == 3 then
-            local itemamount = Config.ItemPrices["iron"].price
-            local pay = (amount * itemamount)
-            Player.Functions.RemoveItem('recycledmaterials', amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
-            Player.Functions.AddItem("iron", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["iron"], 'add', pay)
-
-        elseif data == 5 then
-            local itemamount = Config.ItemPrices["steel"].price
-            local pay = (amount * itemamount)
-            Player.Functions.RemoveItem('recycledmaterials', amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
-            Player.Functions.AddItem("steel", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["steel"], 'add', pay)
-
-        elseif data == 7 then
-            local itemamount = Config.ItemPrices["aluminum"].price
-            local pay = (amount * itemamount)
-            Player.Functions.RemoveItem('recycledmaterials', amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
-            Player.Functions.AddItem("aluminum", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["aluminum"], 'add', pay)
-
-        elseif data == 9 then
-            local itemamount = Config.ItemPrices["copper"].price
-            local pay = (amount * itemamount)
-            Player.Functions.RemoveItem('recycledmaterials', amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
-            Player.Functions.AddItem("copper", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["copper"], 'add', pay)
-
-        elseif data == 11 then
-            local itemamount = Config.ItemPrices["plastic"].price
-            local pay = (amount * itemamount)
-            Player.Functions.RemoveItem('recycledmaterials', amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
-            Player.Functions.AddItem("plastic", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["plastic"], 'add', pay)
-
-        elseif data == 13 then
-            local itemamount = Config.ItemPrices["glass"].price
-            local pay = (amount * itemamount)
-            Player.Functions.RemoveItem('recycledmaterials', amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
-            Player.Functions.AddItem("glass", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["glass"], 'add', pay)
-
-        elseif data == 15 then
-            local itemamount = Config.ItemPrices["rubber"].price
-            local pay = (amount * itemamount)
-            Player.Functions.RemoveItem('recycledmaterials', amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
-            Player.Functions.AddItem("rubber", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["rubber"], 'add', pay)
-
-        elseif data == 17 then
-            local pay = (amount * Config.ItemPrices["cash"].price)
-            Player.Functions.RemoveItem('recycledmaterials', amount)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
-            Player.Functions.AddMoney('cash', pay)
-
-        end
-        
+    if item == 'cash' then
+        local pay = (tradeamount * Config.ItemPrices["cash"].price)
+        Player.Functions.RemoveItem('recycledmaterials', tradeamount)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', tradeamount)
+        Player.Functions.AddMoney('cash', pay)
     else
-        TriggerClientEvent("QBCore:Notify", src, "You don't have any Recycled Materials!", "error")
+        if Player.Functions.GetItemByName("recycledmaterials") ~= nil then
+            Player.Functions.RemoveItem('recycledmaterials', tradeamount)
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', tradeamount)
+            Player.Functions.AddItem(item, pay)
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add', pay)
+        end
     end
-    Wait(1000)
 end)
 
+-------------------
+-- TRADE ONE --
+-------------------
 
-
--- Sell 1 Recycled Materials for x Amount of Material
-
-RegisterNetEvent("qb-recyclejob:SellOne")
-AddEventHandler("qb-recyclejob:SellOne", function(data)
+RegisterNetEvent("qb-recyclejob:TradeOne", function(item)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
+
     if Player.Functions.GetItemByName("recycledmaterials") ~= nil then
-        local amount = Player.Functions.GetItemByName("recycledmaterials").amount
+        local pay = Config.ItemPrices[item].price
 
-        if data == 2 then
-            local pay = Config.ItemPrices["metalscrap"].price
-            Player.Functions.RemoveItem('recycledmaterials', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', 1)
-            Player.Functions.AddItem("metalscrap", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["metalscrap"], 'add', pay)
-
-        elseif data == 4 then
-            local pay = Config.ItemPrices["iron"].price
-            Player.Functions.RemoveItem('recycledmaterials', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', 1)
-            Player.Functions.AddItem("iron", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["iron"], 'add', pay)
-
-        elseif data == 6 then
-            local pay = Config.ItemPrices["steel"].price
-            Player.Functions.RemoveItem('recycledmaterials', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', 1)
-            Player.Functions.AddItem("steel", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["steel"], 'add', pay)
-
-        elseif data == 8 then
-            local pay = Config.ItemPrices["aluminum"].price
-            Player.Functions.RemoveItem('recycledmaterials', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', 1)
-            Player.Functions.AddItem("aluminum", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["aluminum"], 'add', pay)
-
-        elseif data == 10 then
-            local pay = Config.ItemPrices["copper"].price
-            Player.Functions.RemoveItem('recycledmaterials', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', 1)
-            Player.Functions.AddItem("copper", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["copper"], 'add', pay)
-
-        elseif data == 12 then
-            local pay = Config.ItemPrices["plastic"].price
-            Player.Functions.RemoveItem('recycledmaterials', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', 1)
-            Player.Functions.AddItem("plastic", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["plastic"], 'add', pay)
-
-        elseif data == 14 then
-            local pay = Config.ItemPrices["glass"].price
-            Player.Functions.RemoveItem('recycledmaterials', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', 1)
-            Player.Functions.AddItem("glass", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["glass"], 'add', pay)
-
-        elseif data == 16 then
-            local pay = Config.ItemPrices["rubber"].price
-            Player.Functions.RemoveItem('recycledmaterials', 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', 1)
-            Player.Functions.AddItem("rubber", pay)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["rubber"], 'add', pay)
-        end
-    else
-        TriggerClientEvent("QBCore:Notify", src, "You don't have any Recycled Materials!", "error")
+        Player.Functions.RemoveItem('recycledmaterials', 1)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', 1)
+        Player.Functions.AddItem(item, pay)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add', pay)
     end
-    Wait(1000)
+end)
+
+-------------------
+-- TRADE ALL --
+-------------------
+
+RegisterNetEvent("qb-recyclejob:TradeAll", function(item)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local amount = Player.Functions.GetItemByName("recycledmaterials").amount -- Gets amount of recycled materials
+    local itemamount = Config.ItemPrices[item].price -- Gets price of each item
+    local pay = (amount * itemamount)
+
+    if item == 'cash' then
+        Player.Functions.RemoveItem('recycledmaterials', amount)
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
+        Player.Functions.AddMoney('cash', pay)
+    else
+        if Player.Functions.GetItemByName("recycledmaterials") ~= nil then
+            Player.Functions.RemoveItem('recycledmaterials', amount)
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['recycledmaterials'], 'remove', amount)
+            Player.Functions.AddItem(item, pay)
+            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add', pay)
+        end
+    end
 end)
